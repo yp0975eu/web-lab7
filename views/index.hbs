@@ -1,0 +1,19 @@
+<h1>Currency Converter</h1>
+
+<form action="/convert" method="GET">
+    <label for="amount">Amount</label>
+    <input type="number" step="any" name="amount" id="amount"/>
+    <select name="from_currency" id="from_currency">
+        <option value="USD">Dollars</option>
+        <option value="EUR">Euros</option>
+        <option value="JPY">Japanese Yen</option>
+    </select>
+    <br>
+    <label for="to_currency">Convert to</label>
+    <select name="to_currency" id="to_currency">
+        <option value="EUR">Euros</option>
+        <option value="JPY">Japanese Yen</option>
+    </select>
+    <br>
+    <button type="submit">Convert</button>
+</form>
