@@ -1,11 +1,12 @@
 {
-    "name" : "currency",
-    "version" : "0.0.1",
-    "dependencies" : {
-        "express": "~4.14.1",
-        "express-handlebars": "~3.0.0"
-    },
-    "description": "lab 7 app",
-    "main": "app.js",
-    "author": "Me"
+  "name": "currency",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~4.14.1",
+    "express-handlebars": "~3.0.0",
+    "request": "^2.80.0"
+  },
+  "description": "lab 7 app",
+  "main": "app.js",
+  "author": "Me"
 }
