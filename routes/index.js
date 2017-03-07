@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var exchange = require('open-exchange');
 
 // GET request
 router.get('/', function(req, res){
