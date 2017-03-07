@@ -16,6 +16,7 @@ router.get('/convert', function(req, res){
    var amount = req.query.amount;
    var to_currency = req.query.to_currency;
    var rate = exchangeRates[to_currency];
+   var result;
    if ( from_currency == "USD"){
       result = amount * rate;
    } else{
