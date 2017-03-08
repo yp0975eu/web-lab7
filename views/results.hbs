@@ -1,3 +1,7 @@
 <h1>Results</h1>
+{{#if error}}
+    <p>Error with your request. Please check your currencies and try  again.</p>
 
-<p>${{ amount }} {{from_currency}} is equivalent to {{ result }} {{ to_currency  }}</p>
+{{else}}
+    <p>${{ amount }} {{from_currency}} is equivalent to {{ result }} {{ to_currency  }}</p>
+{{/if}}

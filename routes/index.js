@@ -5,26 +5,39 @@ var exchange = require('../open-exchange');
 
 // GET request
 router.get('/', function(req, res){
-   var all_currencies =  exchange.getAllCurrencies();
-   res.render('index', {all_currencies : all_currencies})
+
+   exchange.getAllCurrencies(function(all_currencies){
+
+       res.render('index', {all_currencies : all_currencies})
+
+   });
+
 });
-
-
-var exchangeRates = { 'EUR' : 0.95, 'JPY' : 112.84, 'USD' : 1 };
 
 /* Handle currency form submit */
 router.get('/convert', function(req, res){
-   var from_currency = req.query.from_currency;
-   var amount = req.query.amount;
-   var to_currency = req.query.to_currency;
-   var rate = exchangeRates[to_currency];
-   var result;
-   if ( from_currency == "USD"){
-      result = amount * rate;
-   } else{
-      result = (exchangeRates[to_currency] / exchangeRates[from_currency]) * amount;
-   }
-   res.render('results', { amount: amount, from_currency : from_currency , result: result, to_currency: to_currency, currency_from: from_currency })
+
+
+    var from_currency = req.query.from_currency;
+
+    var amount = req.query.amount;
+
+    var to_currency = req.query.to_currency;
+
+    exchange.convertCurrency(amount, from_currency, to_currency, function(err, resp, conversion){
+        // if there is an error then set the error variable to true in the template
+        if( err ){
+
+            res.render('results', {error: true});
+
+
+        } else if(resp && resp.statusCode == 200){
+
+            // if there is a response then set the currency conversion variables
+            res.render('results', { amount: amount, from_currency : from_currency, to_currency: to_currency, result: conversion})
+
+        }
+    });
 });
 
 module.exports = router;
